@@ -61,7 +61,7 @@ Ao invés de ter a interação e autenticação do usuário com cada serviço do
 O Apache Knox é um sistema que fornece um único ponto de autenticação e acesso para serviços do Apache Hadoop em um cluster.
 O Apache Knox simplifica a segurança do Hadoop para usuários que acessam os dados do cluster e executam tarefas e operadores que controlam o acesso e gerenciam o cluster. O gateway é executado como um servidor ou um cluster de servidores, fornecendo acesso centralizado a um ou mais clusters do Hadoop.
 
-![8](8)
+![8](https://github.com/pand-eX/Auditoria_cluster_Hadoop/blob/main/Implementando%20Auditoria%20no%20Hadoop/8.png)
 
 Veja que eu tenho um tráfego público na barra azul e em baixo eu tenho tráfego privado na rede privada da empresa nós temos o Nodes Trabalhadores esses nodes é que tem os dados você tem o Node Master que é o gerente que controla os Metadados, mas os dados ficam nos workers por conta disso os Node ficam em uma rede Privada dentro da rede privada nós temos os MasterNodes só que com uma diferença eles tem uma interface para rede pública e privada com isso o usuário vai fazer acesso pelo Apache Knox fez a autenticação e o apache knox direciona para o que são Master o usuário por sua vez ele não tem acesso direto exatamente aos Node Trabalhadores que é a parte mais crítica do cluster isso adiciona uma camada de segurança.
 
@@ -141,7 +141,7 @@ A ideia por traz do Apache Sentry é oferecer autenticação e autorização par
 
 ![12](https://github.com/pand-eX/Auditoria_cluster_Hadoop/blob/main/Implementando%20Auditoria%20no%20Hadoop/12.png)
 
-![13](https://github.com/pand-eX/Auditoria_cluster_Hadoop/blob/main/Implementando%20Auditoria%20no%20Hadoop/14.png)
+![13](https://github.com/pand-eX/Auditoria_cluster_Hadoop/blob/main/Implementando%20Auditoria%20no%20Hadoop/13.png)
 
 Nesse diagrama basicamente você encontra o objetivo veja que nós temos o Sentry no centro.
 Entre esses 3 produtos o ideal é o Apache Ranger para quem quer fazer auditoria. O Apache Knox o ideal para quem quer apenas um Gateway de comunicação principalmente a partir de uma aplicação caso os usuários não for acessar diretamente os componentes mas vão acessar via aplicação. Entretanto, o Apache Sentry oferece suporte para alguns componentes que o Ranger é o Knox não oferece por exemplo um banco de dados Impala e você quer configurar autorização de acesso então você precisa usar o Sentry. Não existe uma única solução que atende toda a necessidade nada impede que você tenha o Apache Range é o Sentry no mesmo ambiente só vai aumentar a complexidade ambos precisam de um Plug-in um deamon instalado que vai rodar em cada servidor onde você tem um componente Hadoop no knox não há necessidade por que na verdade um gateway
